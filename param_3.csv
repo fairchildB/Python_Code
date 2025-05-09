@@ -1,0 +1,4 @@
+Param,Value
+x_field,ACRES
+y_field ,NDVI_mean
+outfile,scatterplot_Acres_vs_NDVI_mean.png

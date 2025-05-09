@@ -1,0 +1,4 @@
+Param,Value
+x_field,MARKET_VAL
+y_field ,NDVI_mean
+outfile,scatterplot_Market_Value_vs_NDVI_mean.png

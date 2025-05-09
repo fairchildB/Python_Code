@@ -1,7 +1,7 @@
 import arcpy
 import pandas as pd
-import matplotlib.pyplot as plt
-import Lab4_functions as l4
+import matplotlib.pyplot as plt 
+import Fairchild_B_Lab4_functions as l4
 import importlib
 
 
@@ -24,7 +24,10 @@ import importlib
 #   
 # Set the workspace to point to the geodatabase you are using for this lab
 
-arcpy.env.workspace = r"R:\2025\Spring\GEOG562\Instructors\kennedy_2025\Lab4\Lab4_arcproject_REK\Lab4_arcproject_REK.gdb" 
+arcpy.env.workspace = r"C:\Users\bryce\Desktop\SP25\GEOG 462\Lab_4\Fairchild_Bryce_Lab4\Fairchild_Bryce_Lab4.gdb" 
+
+
+#R:\2025\Spring\GEOG562\Instructors\kennedy_2025\Lab4\Lab4_arcproject_REK\Lab4_arcproject_REK.gdb
 
 ############################################################################
 # Block 3:  We are going to work with the notion of extending raster objects
@@ -49,6 +52,7 @@ print(r.metadata["bounds"])
 # Your answer:
 
 
+# we need the super() function to call the parent class functionality. 
 
 
 
@@ -94,7 +98,8 @@ else:
 
 #  Your answer:
 
-
+# It worked because the values are set within the r.calculate_ndvi method within the functions. 
+# This is then called in the script for execution. 
 
 
 ##########################################################
@@ -143,7 +148,8 @@ smart_vector.save_as("Corvallis_parcels_plusNDVI")
 
 #Your answer
 
-
+# It looks like the zonal stats for NDVI worked reasonably well. I changed the symbology to a graduated color scheme to observe the overall pattern. One strange thing 
+# I noticed was cmapus has a relativly low NDVI. 
 
 
 
@@ -170,11 +176,12 @@ okay, df = smart_vector.extract_to_pandas_df()
 
 # Your answer
 
+# When the fields are set to none, this means that the function selects all of the fields within the feature class.
+# This is used in the code becuase users can select specific fields or just get an output of all of them. 
 
 
 
-
-#################################################
+# ################################################
 # Block 7: 
 #  Now we're going to take advantage of the Pandas
 #   link with matplotlib to make a graph
@@ -201,10 +208,11 @@ sp.scatterplot(x_field, y_field, x_min=1901, x_max = 2030)
 #  You'll note that I use the same test for x_min not being "None". 
 # But what about the second line -- what is df_to_plot, 
 #    and what does this line achieve? 
-#  
+ 
 
 
-# Your answer:
+# Your answer: This line is used to ensure that the x_min value is valid and that the data within the data frame can be used to create the plot.
+# This essentially filters the plot to only include values that are significant or valid.
 
 
 
@@ -238,13 +246,13 @@ sp.scatterplot(x_field, y_field, x_min=1901, x_max = 2030)
 #   Here, and you have the name of the file for the control file
 #  Below, simply call the "plot_from_file" method to run the .csv fil
 
-param_file = 'params_1.csv'  #  this assumes you've placed in the 
-                            # python code directory you're working in here. 
-# Your code:
+param_file = 'param_2.csv'  #  this assumes you've placed in the 
+#                             # python code directory you're working in here. 
+# # Your code:
 
 
 
-#  My code
+# #  My code
 
 ok = sp.plot_from_file(param_file)
 if ok:
@@ -268,14 +276,14 @@ if ok:
 
 # Your answer
 
-
+# If you give it a non-numeric field, it will cause an error. You could add a try/except statement to see if a field is indeed numeric or not. 
 
 
 # Question 8.2
 #  In your lab document, paste in a couple of the
 #    examples of the output .png files. 
 
-
+#See the lab document for the png files.
 
 # Question 8.3
 #   I don't like having to type the name of the 
@@ -286,5 +294,5 @@ if ok:
 
 # Your answer:
 
-
+# You could create a function that pulls the x and y variable names from the csv and names the PNG accordingly based on these changing field names. 
 
